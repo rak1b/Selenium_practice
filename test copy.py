@@ -1,13 +1,18 @@
+url = 'https://www.europeanmovement.co.uk'
+# url = 'https://www.melbournefoe.org.au'
 # url = 'https://www.okgrassrootsproject.com/'
-url = 'https://www.europeanmovement.co.uk/login'
+# url = 'https://refugeeweek-refugeecouncilaus.nationbuilder.com/login'
+
 email = 'mysterious2798@gmail.com'
 passw = 'Rakibrk11'
 from selenium import webdriver
 import time
 
+
 browser = webdriver.Chrome('C:/chromedriver/chromedriver.exe')
 
-browser.get(url)
+browser.get(url+'/login')
+browser.maximize_window()
 #openning landing page
 
 time.sleep(3)
@@ -23,15 +28,20 @@ email_inp.send_keys(email)
 
 pass_inp = browser.find_element_by_xpath('//*[@id="user_session_password"]')
 pass_inp.send_keys(passw)
-login_btn = browser.find_element_by_xpath('//*[@id="middle"]/div/div/div[2]/div/div[2]/div/div/div[1]/form/div[4]/div/input').click()
-time.sleep(3)
+time.sleep(1)
+
+login_btn = browser.find_element_by_xpath('//input[@name="commit"]').click()
+# login_btn = browser.find_element_by_xpath('//*[@id="middle"]/div/div/div[2]/div/div[2]/div/div/div[1]/form/div[4]/div/input').click()
+time.sleep(1)
 
 
 #openning the homepage after login
 
 #going to the event page
 def go_to_event():
-    event_btn = browser.find_element_by_xpath('//*[@id="topnav"]/li[6]/a').click()
+    browser.get(f'{url}/events')
+    
+    # event_btn = browser.find_element_by_xpath('//*[@id="topnav"]/li[6]/a').click()
     time.sleep(3)
 
 
@@ -70,6 +80,7 @@ go_to_event()
 host_event()
 go_to_event()
 host_event()
+
 
 # go_to_event()
 
